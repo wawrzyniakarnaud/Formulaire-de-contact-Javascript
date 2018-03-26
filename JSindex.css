@@ -1,0 +1,59 @@
+form
+{
+    
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 200px;
+    background-color: rgba (0 0 0 500);
+    
+}
+.un
+{
+    display:flex;
+    justify-content: space-around;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+}
+.deux
+{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+
+.trois
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.button
+{
+    margin-left: 45%;
+}
+.HF
+{
+
+}
+body
+{
+    background-image: url(beautiful-background-images-5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 900px;
+   
+}
+input, textarea, select
+{
+    border-radius: 20px;
+}
+.button
+{
+    margin-top: 50px;
+}
+.button:hover
+{
+    color: orange;
+}

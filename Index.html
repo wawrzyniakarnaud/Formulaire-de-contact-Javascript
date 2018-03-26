@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="JSindex.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+
+<body>
+    <header>
+        <script class="titre" language="JavaScript">
+            <!-- Begin
+            // http://javascript.internet.com
+
+            function createHexArray(n) {
+                this.length = n;
+                for (var i = 1; i <= n; i++)
+                    this[i] = i - 1;
+
+                this[11] = "A";
+                this[12] = "B";
+                this[13] = "C";
+                this[14] = "D";
+                this[15] = "E";
+                this[16] = "F";
+                return this;
+            }
+            hx = new createHexArray(16);
+
+            function convertToHex(x) {
+                if (x < 17) x = 16;
+                var high = x / 16;
+                var s = high + "";
+                s = s.substring(0, 2);
+                high = parseInt(s, 10);
+                var left = hx[high + 1];
+                var low = x - high * 16;
+                if (low < 1) low = 1;
+                s = low + "";
+                s = s.substring(0, 2);
+                low = parseInt(s, 10);
+                var right = hx[low + 1];
+                var string = left + "" + right;
+                return string;
+            }
+
+            function makeRainbow(text) {
+                text = text.substring(0, text.length);
+                color_d1 = 255;
+                mul = color_d1 / text.length;
+                for (var i = 0; i < text.length; i++) {
+                    color_d1 = 255 * Math.sin(i / (text.length / 3));
+                    color_h1 = convertToHex(color_d1);
+                    color_d2 = mul * i;
+                    color_h2 = convertToHex(color_d2);
+
+                    k = text.length;
+                    j = k - i;
+                    if (j < 0) j = 0;
+                    color_d3 = mul * j;
+                    color_h3 = convertToHex(color_d3);
+
+                    document.write("<FONT COLOR=\"#" + color_h3 + color_h1 + color_h2 + "\">" + text.substring(i, i + 1) + "</FONT>");
+                }
+            }
+            // End -->
+        </script>
+
+
+        
+            <div align="center">
+                <strong>
+<font size=6>
+<script>
+<!-- Begin
+makeRainbow("FORMULAIRE JAVASCRIPT");
+// End -->
+</script>
+</font>
+</strong>
+            </div>
+    </header>
+
+    <form method="post" name="form_js" onsubmit="return(validate());">
+
+    
+
+        <section class="form">
+
+            <div class="deux">
+                <article class="nom">
+
+                    <div style="width:27%;">
+                        <label for="nom">Nom : </label>
+                    </div>
+
+                    <div style="width:20%;">
+                        <input name="nom" id="nom" type="text" onchange="end_form()" />
+                    </div>
+
+                    <div class="uncheck" id="id_2"></div>
+
+                </article>
+                <article class="prenom">
+
+                    <div>
+                        <label for="prenom">Prénom  : </label>
+                    </div>
+
+                    <div>
+                        <input name="prenom" id="prenom" type="text" onchange="end_form()" />
+                    </div>
+
+                    <div class="uncheck" id="id_3"></div>
+
+                </article>
+                <article class="adresse">
+
+                    <div>
+                        <label for="mail_inscription">Email : </label>
+                    </div>
+
+                    <div>
+                        <input name="mail_inscription" id="mail_inscription" type="text" required onchange="end_form()" />
+                    </div>
+
+                    <div class="uncheck" id="id_4"></div>
+
+                </article>
+            </div>
+            <div class="un">
+                <article class="HF">
+                    <input type="radio" id="femme" name="contact" value="femme">
+                    <label for="femme">Femme</label>
+
+                    <input type="radio" id="homme" name="contact" value="homme">
+                    <label for="homme">Homme</label>
+                </article>
+                <article class="pp">
+
+                    <label class="txt" for="statue"> Etes vous ..</label>
+
+                    <select id="statue" name="statue">
+                <option value="none"> Contact </option>
+                <option value="part">Particulier</option>
+                <option value="pro">professionnel</option>
+            </select>
+                </article>
+            </div>
+
+
+
+            <div class="trois">
+
+                <article class="message">
+                    <label class="txt" for="subject">Subject</label><br>
+                    <textarea id="subject" name="subject" style="width:200px"></textarea>
+                </article>
+            </div>
+
+            <div id="btn" class="button">
+                <input type="submit" id="Validation" value="Envoyé" disabled="true" />
+
+
+            </div>
+
+
+
+
+
+
+
+        </section>
+    </form>
+    <script>
+        document.getElementById('Validation').style.display = "none";
+
+        function end_form() {
+            var champ_obligatoire = ['nom', 'prenom', 'mail_inscription', ];
+            var champ_plein = true;
+            for (var h = 0; h < 3; h++) {    
+                valeur = document.getElementById(champ_obligatoire[h]).value;
+                console.log(valeur);
+                if ((valeur.length == 0) || (valeur == "") || (valeur == "NULL"))  {        
+                    champ_plein = false;    
+                }
+            } 
+            if (champ_plein) {
+                document.getElementById('Validation').disabled = false;
+                document.getElementById('Validation').style.display = "block";
+
+
+            } else {
+                document.getElementById('Validation').disabled = true;
+
+            }
+        }
+
+
+
+
+
+        function validate() {
+
+            if (document.form_js.contact.value == "") {
+                alert("Homme ou Femme ...? ");
+                
+                return false;
+            }
+            if (document.form_js.statue.value == "none") {
+                alert("Non, pas encore ..");
+                document.form_js.statue.focus();
+                document.form_js.statue.style.backgroundColor = "orange";
+                return false;
+
+            }
+            if (document.form_js.subject.value == "") {
+                alert("Vous n'avez rien a me dire ?");
+                document.form_js.subject.focus();
+                document.form_js.subject.style.backgroundColor = "orange";
+                return false;
+
+            }
+
+        }
+    </script>
+
+    <script class="anim" language="JavaScript">
+        //largeur du texte défilant (en pixels)
+        var marqueewidth = 600;
+        //hauteur du texte défilant (en pixels,Netscape)
+        var marqueeheight = 20;
+        //vitesse de défilement du texte
+        var speed = 6;
+        //contenu du texte défilant
+        var marqueecontents = '<font color=red><font size=5em><font face=Arial><strong>---> Coucou toi,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quel beau travail !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merci..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000euros stp. <--- , </strong></font>';
+
+        document.write('<marquee scrollAmount=' + speed + ' style="width:' + marqueewidth + '">' + marqueecontents + '</marquee>');
+
+        function regenerate() {
+            window.location.reload();
+        }
+
+        function regenerate2() {
+            if (document.layers) {
+                setTimeout("window.onresize=regenerate", 50);
+                intializemarquee();
+            }
+        }
+
+        function intializemarquee() {
+            document.cmarquee01.document.cmarquee02.document.write('<nobr>' + marqueecontents + '</nobr>');
+            document.cmarquee01.document.cmarquee02.document.close();
+            thelength = document.cmarquee01.document.cmarquee02.document.width;
+            scrollit();
+        }
+
+        function scrollit() {
+            if (document.cmarquee01.document.cmarquee02.left >= thelength * (-1)) {
+                document.cmarquee01.document.cmarquee02.left -= speed;
+                setTimeout("scrollit()", 100);
+            } else {
+                document.cmarquee01.document.cmarquee02.left = marqueewidth;
+                scrollit();
+            }
+        }
+
+        window.onload = regenerate2;
+    </script>
+
+
+    <ilayer width=&{marqueewidth}; height=&{marqueeheight}; name="cmarquee01">
+        <layer name="cmarquee02"></layer>
+    </ilayer>
+
+
+
+    <footer>
+
+    </footer>
+    </body>
+
+</html>
